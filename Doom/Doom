@@ -543,18 +543,18 @@ local deathAnimation = function()
 	local scr_x, scr_y = term.getSize()
 	local blood = {}
 	blood[1] = {}
+	
 	for a = 1, scr_x do
 		blood[1][a] = colors.red
 	end
-	local function clone(org)
-		return {table.unpack(org)}
-	end
+	
 	for r = 2, scr_y do
 		blood[r] = {table.unpack(blood[r-1])}
 		for a = 1, scr_x do
 			if math.random(100) < 16 then blood[r][a] = 0 end
 		end
 	end
+	
 	local fade = function(col1,col2,delay)
 		local oldeTXT, oldeBG = term.getTextColor(), term.getBackgroundColor()
 		term.setBackgroundColor(col1)
@@ -599,6 +599,7 @@ local deathAnimation = function()
 		end
 		sleep(1/8)
 	end
+	
 	term.setTextColor(colors.white)
 	local script = {
 		"You feel the last of",
@@ -620,11 +621,14 @@ local deathAnimation = function()
 		sleep(0)
 	end
 	sleep(0.5)
+	
 	os.pullEvent("char")
 	term.clear()
 	sleep(0.1)
+	
 	fade(colors.red,colors.black,0.1)
 	sleep(0.5)
+	
 	term.setBackgroundColor(colors.black)
 	term.setCursorPos(1,1)
 	term.clear()
