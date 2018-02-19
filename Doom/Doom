@@ -607,11 +607,11 @@ local deathAnimation = function()
 		"as your body succumbs to",
 		"the deeply inflicted wounds",
 		"you failed to prevent.",
-		"",
 		"Your lungs collapse.",
-		"Sucks to suck.",
 		"",
-		"GAME OVER."
+		"GAME OVER",
+		"",
+		"Press any key to continue"
 	}
 	for y = scr_y, 1, -1 do
 		term.scroll(-1)
@@ -622,7 +622,7 @@ local deathAnimation = function()
 	end
 	sleep(0.5)
 	
-	os.pullEvent("char")
+	os.pullEventRaw()
 	term.clear()
 	sleep(0.1)
 	
