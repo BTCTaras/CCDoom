@@ -549,7 +549,7 @@ local deathAnimation = function()
 	end
 	
 	for r = 2, scr_y do
-		blood[r] = {table.unpack(blood[r-1])}
+		blood[r] = {table.unpack(blood[r-1])} -- this copies the table
 		for a = 1, scr_x do
 			if math.random(100) < 16 then blood[r][a] = 0 end
 		end
